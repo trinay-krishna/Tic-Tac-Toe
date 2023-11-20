@@ -1,5 +1,5 @@
+(function(){
 const gameBoard=(function (){
-    console.log("Starting Game!");
     let gameboard=["","","","","","","","",""];
 
     function addMarkerToBoard(player,index){
@@ -28,7 +28,7 @@ const Winner=(function (){
     function isDiagonalFilled(marker){
         if((marker!=gameboard[0] && marker!=gameboard[2]) || marker!=gameboard[4])
             return false;
-        return(marker===gameboard[6] || marker===gameboard[8]);
+        return((marker===gameboard[6] && marker===gameboard[2]) || (marker===gameboard[0]&& marker===gameboard[8]));
     }
 
     function declareWinner(marker){
@@ -58,7 +58,11 @@ const Winner=(function (){
             declareWinner(marker);
     }
 
-    return {gameFinishFlag,checkWinner};
+    function getGameFlag(){
+        return gameFinishFlag;
+    }
+
+    return {getGameFlag,checkWinner};
 })(); 
 
 const playerInteraction=(function(){
@@ -87,7 +91,7 @@ const playerInteraction=(function(){
 
     function getComputerChoice(playerChoice){
         let computerChoice;
-        if(playerChoice===-1 || !gameboard.includes(""))
+        if(playerChoice===-1 || !gameboard.includes("") || Winner.getGameFlag())
             return -1;
         do{
             computerChoice=Math.floor(Math.random()*9);
@@ -110,8 +114,7 @@ const playerInteraction=(function(){
     }
 
     function addMarker(event){
-        console.log(Winner.gameFinishFlag)
-        if(Winner.gameFinishFlag)
+        if(Winner.getGameFlag())
             return;
         const playerChoice=getClickedIndex(event);
         gameBoard.addMarkerToBoard(player1,playerChoice);
@@ -120,5 +123,4 @@ const playerInteraction=(function(){
         placeMarkerDOM(playerChoice,computerChoice);
     }
 })()
-
-
+})();
