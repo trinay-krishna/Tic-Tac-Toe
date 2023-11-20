@@ -1,0 +1,46 @@
+html{
+    height: 100%;
+}
+body{
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(228, 224, 224);
+}
+ul{
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3,160px);
+    grid-template-rows: repeat(3,160px);
+    gap: 7px;
+    background-color: rgb(15, 118, 187);
+}
+.header{
+    text-align: center;
+    font-size: 1.9rem;
+    background-color: rgb(18, 46, 88);
+    color: rgb(255, 255, 255);
+}
+
+.box{
+    width: 160px;
+    height: 160px;
+    background-color: rgb(228, 224, 224);
+}
+
+.main-container{
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.mark{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5.7rem;
+}
